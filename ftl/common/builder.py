@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 import abc
 import cStringIO
 import gzip
@@ -51,6 +52,7 @@ class Base(object):
 
     def __enter__(self):
         """Initialize the builder."""
+        return self
 
     def __exit__(self, unused_type, unused_value, unused_traceback):
         """Cleanup after the builder."""
