@@ -1,0 +1,3 @@
+steps:
+- name: 'gcr.io/dlorenc-vmtest2/ftl-node:dev'
+  args: ['--base=gcr.io/google-appengine/nodejs:latest', '--name=gcr.io/dlorenc-vmtest2/ftltest-node:latest', '--directory=/workspace/']

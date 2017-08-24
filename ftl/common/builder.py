@@ -74,6 +74,7 @@ class JustApp(Base):
 
     def BuildAppLayer(self):
         """Override."""
+        print('Generating app layer.')
         buf = cStringIO.StringIO()
         with tarfile.open(fileobj=buf, mode='w') as out:
             for name in self._ctx.ListFiles():
@@ -86,6 +87,9 @@ class JustApp(Base):
         sha = 'sha256:' + hashlib.sha256(tar).hexdigest()
 
         gz = cStringIO.StringIO()
-        with gzip.GzipFile(fileobj=gz, mode='w', compresslevel=1) as f:
+        # TODO: use gzip directly instead of python.
+        print('Compressing app layer.')
+        with gzip.GzipFile(fileobj=gz, mode='w', mtime=0, compresslevel=1) as f:
             f.write(tar)
+        print('App layer compressed.')
         return gz.getvalue(), sha

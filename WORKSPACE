@@ -16,12 +16,6 @@ load("@io_bazel_rules_go//proto:go_proto_library.bzl", "go_proto_repositories")
 
 go_proto_repositories()
 
-git_repository(
-    name = "io_bazel_rules_docker",
-    commit = "db1b348dfdf161a784bc1efc5a1020395572b996",
-    remote = "https://github.com/bazelbuild/rules_docker.git",
-)
-
 new_go_repository(
     name = "in_gopkg_yaml_v2",
     importpath = "gopkg.in/yaml.v2",

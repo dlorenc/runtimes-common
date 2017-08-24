@@ -49,3 +49,22 @@ py_test(
         "@mock//:mock",
     ],
 )
+
+py_image(
+    name = "node_image",
+    srcs = glob(["node/*.py"]),
+    base = "@py_base//image",
+    main = "node/main.py",
+    deps = [
+        "//ftl:ftl_lib",
+        "@httplib2//:httplib2",
+    ],
+)
+
+docker_push(
+    name = "push_node_image",
+    image = ":node_image",
+    registry = "gcr.io",
+    repository = "dlorenc-vmtest2/ftl-node",
+    tag = "dev",
+)
